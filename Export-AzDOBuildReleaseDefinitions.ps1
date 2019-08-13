@@ -1,6 +1,7 @@
 <#
     .SYNOPSIS
       Exports build and release definitions from a source Azure DevOps project and imports these into a destination project.
+      If no destination project give it will only export build and release defintions and save it as JSON.
 
     .DESCRIPTION
       The script will create two folders with all exported build and release definitions as JSON.
