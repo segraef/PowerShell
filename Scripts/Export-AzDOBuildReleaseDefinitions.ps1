@@ -37,7 +37,7 @@
     .NOTES
       Version:        1.0
       Author:         Sebastian Gräf
-      Email:          segraef@microsoft.com
+      Email:          sebastian@graef.io
       Creation Date:  08/13/2019
       Purpose/Change: Initial script development
 #>
