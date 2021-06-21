@@ -1,0 +1,27 @@
+---
+name: "Default Workflow"
+
+on:
+
+  workflow_dispatch:
+
+  schedule:
+    - cron: "0 */6 * * *"
+
+jobs:
+
+  job:
+    name: "Job"
+    runs-on: ubuntu-20.04
+
+    steps:
+
+       - name: "Checkout"
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: "Dependencies"
+        run: |
+          echo PowerShellCore
+        shell: pwsh
