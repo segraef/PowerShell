@@ -39,7 +39,6 @@ Param
 
 # Set Error Action to Silently Continue
 $ErrorActionPreference = "SilentlyContinue"
-$VerbosePreference = "SilentlyContinue"
 
 # Dot Source required Function Libraries
 . ..\Write-Log.ps1 > $null
