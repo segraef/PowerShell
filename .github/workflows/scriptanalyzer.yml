@@ -5,7 +5,7 @@ on: [pull_request] #push
 
 jobs:
   job:
-    name: "Install Dependencies"
+    name: "Run PSSA"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
