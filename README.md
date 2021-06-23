@@ -2,6 +2,10 @@
 
 This repository contains Azure and Windows PowerShell scripts for developers and administrators to develop, deploy, and manage Microsoft Azure and Microsoft Windows ecosystem.
 
+## Status
+
+[![.github/workflows/scriptanalyzer.yml](https://github.com/segraef/PowerShell/actions/workflows/scriptanalyzer.yml/badge.svg)](https://github.com/segraef/PowerShell/actions/workflows/scriptanalyzer.yml)
+
 ## Reporting Issues and Feedback
 
 ### Issues
