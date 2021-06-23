@@ -8,20 +8,20 @@ jobs:
     name: "Install Dependencies"
     runs-on: ubuntu-latest
     steps:
-    - name: "Checkout"
-    - uses: actions/checkout@v2
-    - name: "Install ScriptAnalyzer"
-      shell: pwsh
-      run: |
-        Install-Module PSScriptAnalyzer
-    - name: "Lint with ScriptAnalyzer"
-      shell: pwsh
-      run: |
-        Invoke-ScriptAnalyzer -Path *.ps1 -Recurse -Outvariable issues
-        $errors   = $issues.Where({$_.Severity -eq 'Error'})
-        $warnings = $issues.Where({$_.Severity -eq 'Warning'})
-        if ($errors) {
-            Write-Error "There were $($errors.Count) errors and $($warnings.Count) warnings total." -ErrorAction Stop
-        } else {
-            Write-Output "There were $($errors.Count) errors and $($warnings.Count) warnings total."
-        }
+      - name: "Checkout"
+      - uses: actions/checkout@v2
+      - name: "Install ScriptAnalyzer"
+        shell: pwsh
+        run: |
+          Install-Module PSScriptAnalyzer
+      - name: "Lint with ScriptAnalyzer"
+        shell: pwsh
+        run: |
+          Invoke-ScriptAnalyzer -Path *.ps1 -Recurse -Outvariable issues
+          $errors   = $issues.Where({$_.Severity -eq 'Error'})
+          $warnings = $issues.Where({$_.Severity -eq 'Warning'})
+          if ($errors) {
+              Write-Error "There were $($errors.Count) errors and $($warnings.Count) warnings total." -ErrorAction Stop
+          } else {
+              Write-Output "There were $($errors.Count) errors and $($warnings.Count) warnings total."
+          }
