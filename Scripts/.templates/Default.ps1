@@ -26,56 +26,67 @@
   <Example goes here. Repeat this attribute for more than one example>
 #>
 
-#------------------------------------------------------------[Parameters]---------------------------------------------------------
+#region Parameters
 
 [CmdletBinding()]
-Param
+param
 (
-    [Parameter()][string]$String,
-    [Parameter()][securestring]$SecureString
+  [Parameter()]
+  [String]$String,
+  [Parameter()]
+  [SecureString]$SecureString
 )
 
-#---------------------------------------------------------[Initialisations]-------------------------------------------------------
+#endregion
 
-# Set Error Action to Silently Continue
-$ErrorActionPreference = "SilentlyContinue"
+#region Initialisations
+
+$ErrorActionPreference = "Continue"
+$VerbosePreference = "Continue"
 
 # Dot Source required Function Libraries
-. ..\Write-Log.ps1 > $null
+Import-Module ..\Write-Log.ps1
 
-#----------------------------------------------------------[Declarations]---------------------------------------------------------
+#endregion
 
-#-----------------------------------------------------------[Functions]-----------------------------------------------------------
+#region Declarations
+#endregion
 
-Function FunctionName {
-    Param()
+#region Functions
+
+function FunctionName {
+  Param()
   
-    Begin {
-        Write-Log "Let's start !"
+  begin {
+    Write-Log "Let's start !"
+  }
+  
+  process {
+    try {
+      Write-Output "Hello Template !"
     }
-  
-    Process {
-        Try {
-            Write-Output "Hello Template !"
-        }
     
-        Catch {
-            Write-Log "$_.Exception" -Warning
-            Break
-        }
+    catch {
+      Write-Output $_
+      Write-Log $_ -Warning
     }
+  }
   
-    End {
-        If ($?) {
-            Write-Log "Completed successfully !"
-        }
+  end {
+    if ($?) {
+      Write-Log "Completed successfully !"
     }
+  }
 }
 
-#-----------------------------------------------------------[Execution]----------------------------------------------------------
+#endregion
+
+#region Execution
 
 Write-Log "Executing $($MyInvocation.MyCommand.Name)"
 
 FunctionName
 
 Write-Log "Finished executing $($MyInvocation.MyCommand.Name)"
+
+#endregion

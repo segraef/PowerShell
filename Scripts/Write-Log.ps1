@@ -26,39 +26,46 @@
   <Example goes here. Repeat this attribute for more than one example>
 #>
 
-#------------------------------------------------------------[Parameters]---------------------------------------------------------
+#region Parameters
 
 [CmdletBinding()]
 param
 (
-    [String]$Message,
-    [Switch]$Warning,
-    [System.Management.Automation.ErrorRecord]$ErrorObj
+  [String]$Message,
+  [Switch]$Warning,
+  [System.Management.Automation.ErrorRecord]$ErrorObj
 )
 
-#---------------------------------------------------------[Initialisations]-------------------------------------------------------
+#endregion
 
-# Set Error Action to Silently Continue
-$ErrorActionPreference = "SilentlyContinue"
+#region Initialisations
+
+$ErrorActionPreference = "Continue"
 $VerbosePreference = "Continue"
 
-#----------------------------------------------------------[Declarations]---------------------------------------------------------
+#endregion
 
-#-----------------------------------------------------------[Functions]-----------------------------------------------------------
+#region Declarations
+#endregion
 
-#-----------------------------------------------------------[Execution]----------------------------------------------------------
+#region Functions
+#endregion
+
+#region Execution
 
 $LogMessage = "[$(Get-Date -f g)] "
 
 if ($PSBoundParameters.ContainsKey("ErrorObj")) {
-    $LogMessage += " $ErrorObj $($ErrorObj.ScriptStackTrace.Split("`n") -join ' <-- ')"
-    Write-Error -Message $LogMessage
+  $LogMessage += " $ErrorObj $($ErrorObj.ScriptStackTrace.Split("`n") -join ' <-- ')"
+  Write-Error -Message $LogMessage
 }
 elseif ($PSBoundParameters.ContainsKey("Warning")) {
-    $LogMessage += " $Message"
-    Write-Warning -Message $LogMessage
+  $LogMessage += " $Message"
+  Write-Warning -Message $LogMessage
 }
 else {
-    $LogMessage += " $Message"
-    Write-Verbose -Message $LogMessage
+  $LogMessage += " $Message"
+  Write-Verbose -Message $LogMessage
 }
+
+#endregion

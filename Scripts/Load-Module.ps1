@@ -34,20 +34,20 @@ Param
     [Parameter()][string]$Module
 )
 
-#---------------------------------------------------------[Initialisations]-------------------------------------------------------
+#region Initialisations
 
-# Set Error Action to Silently Continue
-$ErrorActionPreference = "SilentlyContinue"
+$ErrorActionPreference = "Continue"
 $VerbosePreference = "Continue"
 
-# Dot Source required Function Libraries
-. ..\Write-Log.ps1
+#endregion
 
-#----------------------------------------------------------[Declarations]---------------------------------------------------------
+#region Declarations
+#endregion
 
-#-----------------------------------------------------------[Functions]-----------------------------------------------------------
+#region Functions
+#endregion
 
-#-----------------------------------------------------------[Execution]-----------------------------------------------------------
+#region Execution
 
 Write-Log "Executing $($MyInvocation.MyCommand.Name)"
 
@@ -71,3 +71,5 @@ else {
 }
 
 Write-Log "Finished executing $($MyInvocation.MyCommand.Name)"
+
+#endregion
