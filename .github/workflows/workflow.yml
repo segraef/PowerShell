@@ -1,27 +1,16 @@
 ---
 name: "Default Workflow"
 
-on:
-
-  workflow_dispatch:
-
-  schedule:
-    - cron: "0 */6 * * *"
+on: [pull_request] #push
 
 jobs:
-
   job:
     name: "Job"
     runs-on: ubuntu-20.04
-
     steps:
-
-       - name: "Checkout"
+      - name: Checkout
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: "Dependencies"
+      - name: Echo
+        shell: pwsh
         run: |
           echo PowerShellCore
-        shell: pwsh
