@@ -18,4 +18,3 @@ assignees: ''
 2.
 
 **Screenshots**
-
