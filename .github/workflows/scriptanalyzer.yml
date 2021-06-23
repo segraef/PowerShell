@@ -1,11 +1,11 @@
 ---
-name: "Default Workflow"
+name: "PSSA"
 
 on: [pull_request] #push
 
 jobs:
   job:
-    name: "Job"
+    name: "Install Dependencies"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -13,7 +13,15 @@ jobs:
       - name: Echo
         shell: pwsh
         run: |
-          echo PowerShellCore
+          Install-Module PSScriptAnalyzer
+          Invoke-ScriptAnalyzer -Path *.ps1 -Recurse -Outvariable issues
+          $errors   = $issues.Where({$_.Severity -eq 'Error'})
+          $warnings = $issues.Where({$_.Severity -eq 'Warning'})
+          if ($errors) {
+              Write-Error "There were $($errors.Count) errors and $($warnings.Count) warnings total." -ErrorAction Stop
+          } else {
+              Write-Output "There were $($errors.Count) errors and $($warnings.Count) warnings total."
+          }
 
 
 # ---
