@@ -1,12 +1,23 @@
 ---
 name: "Default Workflow"
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Person to greet'
+        required: true
+        default: 'You'
+      home:
+        description: 'location'
+        required: false
+        default: 'The Universe'
 
-on: [pull_request] #push
+#on: push #workflow_dispatch # [pull_request] #push
 
 jobs:
   job:
     name: "Job"
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -14,3 +25,5 @@ jobs:
         shell: pwsh
         run: |
           echo PowerShellCore
+          echo "Hello ${{ github.event.inputs.name }}!"
+          echo "- in ${{ github.event.inputs.home }}!"
