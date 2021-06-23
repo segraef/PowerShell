@@ -4,21 +4,16 @@ name: "PSSA"
 on: [pull_request] #push
 
 jobs:
-  dependencies:
-    name: "Install Dependencies"
-    runs-on: ubuntu-latest
-    steps:
-    - name: "Install ScriptAnalyzer"
-      shell: pwsh
-      run: |
-        Install-Module PSScriptAnalyzer
-        
   pssa:
-    name: "Run PSSA"
+    name: "Install Dependencies"
     runs-on: ubuntu-latest
     steps:
     - name: "Checkout"
     - uses: actions/checkout@v2
+    - name: "Install ScriptAnalyzer"
+      shell: pwsh
+      run: |
+        Install-Module PSScriptAnalyzer
     - name: "Lint with ScriptAnalyzer"
       shell: pwsh
       run: |
