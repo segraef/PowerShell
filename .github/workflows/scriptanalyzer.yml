@@ -1,26 +1,25 @@
 ---
-name: PSSA
+name: "PSSA"
 
 on: [pull_request] #push
 
 jobs:
-
   dependencies:
-    name: Install Dependencies
+    name: "Install Dependencies"
     runs-on: ubuntu-latest
     steps:
-    - name: Install ScriptAnalyzer
+    - name: "Install ScriptAnalyzer"
       shell: pwsh
       run: |
         Install-Module PSScriptAnalyzer
         
   pssa:
-    name: Run PSSA
+    name: "Run PSSA"
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
+    - name: "Checkout"
     - uses: actions/checkout@v2
-    - name: Lint with ScriptAnalyzer
+    - name: "Lint with ScriptAnalyzer"
       shell: pwsh
       run: |
         Invoke-ScriptAnalyzer -Path *.ps1 -Recurse -Outvariable issues
