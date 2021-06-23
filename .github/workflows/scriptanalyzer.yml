@@ -1,5 +1,5 @@
 ---
-name: "PSSA"
+name: "ScriptAnalyzer"
 
 on: [pull_request] #push
 
@@ -10,9 +10,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Echo
+      - name: ScriptAnalyzer
         shell: pwsh
         run: |
           Install-Module PSScriptAnalyzer
           Invoke-ScriptAnalyzer -Path *.ps1 -Recurse
-          

@@ -1,7 +1,7 @@
 ---
 name: "Default Workflow"
 
-on: [pull_request] #push
+on: notrigger # [pull_request] #push
 
 jobs:
   job:
