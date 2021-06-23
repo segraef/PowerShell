@@ -13,6 +13,6 @@ jobs:
       - name: ScriptAnalyzer
         shell: pwsh
         run: |
-          $VerbosePreference = "Continue"
+          # $VerbosePreference = "Continue"
           Install-Module PSScriptAnalyzer
           Invoke-ScriptAnalyzer -Path . -Recurse
